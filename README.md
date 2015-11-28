@@ -31,3 +31,12 @@ of these scripts, please respect this license. Thank you.
 > GMLscripts.com/license
 
 A copy of this license can be found at the root level of the repository.
+
+A project is included in the Build directory, this is generated with the build.py
+script. This requires python 2.7.x. The script creates an extension with all
+the scripts from the repository, this is useful to check compile errors and
+to publish to the marketplace.
+
+You can generate a new project file with;
+
+    python build.py
