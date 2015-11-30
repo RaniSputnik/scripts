@@ -49,7 +49,6 @@ for dirPath, subdirList, fileList in os.walk(rootDir):
 		# Read the GML files from the rest of the Repo
 		print('Reading directory: %s' % dirName)
 		dir_level = dirPath.count(os.sep)
-		print('Dir level: %s' % dir_level)
 		el_tree[dir_level] = ET.SubElement(el_tree[dir_level-1],'scripts')
 		el_tree[dir_level].attrib["name"] = dirName
 		ensure_dir(os.path.join(outDir,dirPath))
@@ -61,9 +60,9 @@ for dirPath, subdirList, fileList in os.walk(rootDir):
 				with open(os.path.join(dirPath,fname), 'r') as script:
 				    data = script.read().splitlines(True)
 				with open(fout, 'w') as dest:
-				    dest.writelines(data[1:])
+					dest.writelines(data[1:])
 				script_el = ET.SubElement(el_tree[dir_level], 'script')
-				script_el.text = 'scripts\\'+fname
+				script_el.text = os.path.join('scripts',fname)
 				included_script = ET.SubElement(included_res, 'Resource')
 				included_script.text = os.path.join('Scripts',dirPath,fname)
 
